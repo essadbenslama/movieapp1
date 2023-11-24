@@ -2,7 +2,7 @@ import React from 'react';
 import {Button,Modal,Form }from 'react-bootstrap';
 import { useState } from 'react';
 import { Rating } from '@mui/material';
-
+import { v4 as uuidv4 } from "uuid";
 
 
 const Addmovie = ({adding}) => {
@@ -12,7 +12,9 @@ const Addmovie = ({adding}) => {
     const handleClose = () => setShow(false);
      const handleShow = () => setShow(true);
 
-     const [newmovie,setnewmovie]=useState({});
+     const [newmovie,setnewmovie]=useState({
+      id:uuidv4 (),
+     });
 
      const changeHandler=(e)=>{
         setnewmovie({...newmovie, [e.target.name]: e.target.value})
@@ -43,6 +45,7 @@ const Addmovie = ({adding}) => {
         name="title"
         placeholder="Enter Movie Title" 
         onChange={changeHandler}/>
+        Button
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -62,6 +65,14 @@ const Addmovie = ({adding}) => {
         placeholder="Enter your imageURL"
         onChange={changeHandler} />
       </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>trailerURL</Form.Label>
+        <Form.Control type="text" 
+        name='trailerURL'
+        placeholder="Enter your trailerURL"
+        onChange={changeHandler} />
+      </Form.Group>
       
       <Rating
         name="simple-controlled"
@@ -71,6 +82,7 @@ const Addmovie = ({adding}) => {
             setnewmovie({...newmovie, rating : newValue})
         }}
       />
+  
     </Form>
     </Modal.Body>
       <Modal.Footer>

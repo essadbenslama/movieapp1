@@ -11,17 +11,18 @@ function App() {
 const [movies,setmovies]=useState(data)
 const adding=(newmovie)=>{
   setmovies([...movies,newmovie])};
+  console.log(movies)
 
   const [Search,setSearch]=useState("")
   const [Rating,setRating]=useState(0)
 
   return (
     <div className="App">
+     
       <br/>
       <h1 style={{color:'blue'}}>Galerie of movies</h1>
-      <br/>
-     <Filter setSearch={setSearch} setRating={setRating}/>
-    
+<Filter setSearch={setSearch} setRating={setRating}/> 
+     
       <Addmovie adding={adding}/>
       <br/>
         <MovieList 
@@ -32,8 +33,9 @@ const adding=(newmovie)=>{
     )}
     />
 
-
     </div>
+    
+    
   );
 }
 
